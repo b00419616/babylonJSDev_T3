@@ -66,8 +66,8 @@ function createSpaceRock(scene) {
     let spacerock = MeshBuilder.CreatePolyhedron("spacerock", { type: polyType, size: 1.5 }, scene);
     spacerock.position = new Vector3(0, 0, 0);
     const mat = new StandardMaterial("rockMat", scene);
-    mat.diffuseTexture = new Texture("/textures/spacedebris.png", scene);
-    mat.bumpTexture = new Texture("/textures/spacedebris_n.png", scene);
+    mat.diffuseTexture = new Texture("./textures/spacedebris.png", scene);
+    mat.bumpTexture = new Texture("./textures/spacedebris_n.png", scene);
     mat.bumpTexture.level = 1.25;
     console.log("Bump Level is:  ", mat.bumpTexture.level);
     spacerock.material = mat;
@@ -160,7 +160,7 @@ export default function createScene3(engine) {
     const ground = createGround(scene);
     setupShadows(scene, light);
     const inputMap = {};
-    SceneLoader.ImportMesh("", "/models/", "alien.glb", scene, (meshes, _, __, animationGroups) => {
+    SceneLoader.ImportMesh("", "./models/", "alien.glb", scene, (meshes, _, __, animationGroups) => {
         const playerRoot = new TransformNode("playerRoot", scene);
         meshes.forEach(mesh => (mesh.parent = playerRoot));
         playerRoot.scaling = new Vector3(0.05, 0.05, 0.05);

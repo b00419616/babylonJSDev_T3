@@ -7,7 +7,8 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview --host",
-      "live": "live-server --entry-file=index.html"
+      "live": "live-server --entry-file=index.html",
+       "documentation": "code public/dev.md"
   },
   "dependencies": {
     "@babylonjs/gui": "^7.54.3",

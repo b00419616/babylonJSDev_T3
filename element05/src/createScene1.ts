@@ -63,7 +63,7 @@ function createSphere(scene: Scene)
       { diameter: 2, segments: 32 },
       scene);
     sphere.position.y = 1;
-  applyTexture(sphere, "saturnMat", "textures/saturn.jpg", scene);
+  applyTexture(sphere, "saturnMat", "./textures/saturn.jpg", scene);
     return sphere;
 }
 
@@ -74,7 +74,7 @@ function createTorus(scene: Scene)
       { diameter: 2.5, thickness: 0.3 },
        scene);
     torus.position.y = 1;
-  applyTexture(torus, "saturnMat", "textures/saturn.jpg", scene);
+  applyTexture(torus, "saturnMat", "./textures/saturn.jpg", scene);
     return torus;
 }
   
@@ -84,7 +84,7 @@ function createGround(scene: Scene)
       "ground",
       { width: 12, height: 12 },
       scene);
-  applyTexture(ground, "grassMat", "textures/grass.jpg", scene);
+  applyTexture(ground, "grassMat", "./textures/grass.jpg", scene);
     return ground;
 }
 
@@ -95,7 +95,7 @@ function createCylinder(scene: Scene)
       { diameter: 2, height: 2},
       scene);
     cylinder.position = new Vector3(-3, 1, 0);
-  applyTexture(cylinder, "radioactiveMat", "textures/radioactive.jpg", scene);
+  applyTexture(cylinder, "radioactiveMat", "./textures/radioactive.jpg", scene);
     return cylinder;
 }
   

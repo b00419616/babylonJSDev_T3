@@ -126,9 +126,9 @@ function createSpaceRock(scene: Scene) {
     spacerock.position = new Vector3(0, 0, 0);
 
     const mat = new StandardMaterial("rockMat", scene);
-    mat.diffuseTexture = new Texture("/textures/spacedebris.png", scene);
+    mat.diffuseTexture = new Texture("./textures/spacedebris.png", scene);
 
-    mat.bumpTexture = new Texture("/textures/spacedebris_n.png", scene);
+    mat.bumpTexture = new Texture("./textures/spacedebris_n.png", scene);
     mat.bumpTexture.level = 1.25;
     console.log("Bump Level is:  ", mat.bumpTexture.level); 
 

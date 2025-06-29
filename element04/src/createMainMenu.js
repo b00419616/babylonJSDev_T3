@@ -23,7 +23,7 @@ function createSkybox(scene) {
     const skybox = MeshBuilder.CreateBox("skybox", { size: 5000 }, scene);
     const mat = new StandardMaterial("skyboxMat", scene);
     mat.backFaceCulling = false;
-    const texture = new CubeTexture("/textures/skybox/skybox", scene);
+    const texture = new CubeTexture("./textures/skybox/skybox", scene);
     mat.reflectionTexture = texture;
     mat.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
     mat.disableLighting = true;

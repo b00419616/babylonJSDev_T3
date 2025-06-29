@@ -44,7 +44,7 @@ function setupShadows(scene, light) {
     }
 }
 function createGround(scene) {
-    const ground = MeshBuilder.CreateGroundFromHeightMap("ground", "textures/heightMap.png", { width: 128, height: 128, subdivisions: 128, minHeight: 0, maxHeight: 5 }, scene);
+    const ground = MeshBuilder.CreateGroundFromHeightMap("ground", "./textures/heightMap.png", { width: 128, height: 128, subdivisions: 128, minHeight: 0, maxHeight: 5 }, scene);
     applyTexture(ground, "moonMat", "textures/moon.jpg", scene);
     return ground;
 }
@@ -68,8 +68,8 @@ function createSpaceRock(scene) {
     let spacerock = MeshBuilder.CreatePolyhedron("spacerock", { type: polyType, size: 1.5 }, scene);
     spacerock.position = new Vector3(0, 0, 0);
     const mat = new StandardMaterial("rockMat", scene);
-    mat.diffuseTexture = new Texture("/textures/spacedebris.png", scene);
-    mat.bumpTexture = new Texture("/textures/spacedebris_n.png", scene);
+    mat.diffuseTexture = new Texture("./textures/spacedebris.png", scene);
+    mat.bumpTexture = new Texture("./textures/spacedebris_n.png", scene);
     mat.bumpTexture.level = 1.25;
     console.log("Bump Level is:  ", mat.bumpTexture.level);
     spacerock.material = mat;
@@ -120,7 +120,7 @@ function createSkybox(scene) {
     const skybox = MeshBuilder.CreateBox("skybox", { size: 5000 }, scene);
     const mat = new StandardMaterial("skyboxMat", scene);
     mat.backFaceCulling = false;
-    const texture = new CubeTexture("/textures/skybox/skybox", scene);
+    const texture = new CubeTexture("./textures/skybox/skybox", scene);
     mat.reflectionTexture = texture;
     mat.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
     mat.disableLighting = true;
@@ -179,7 +179,7 @@ function handleCoinCollection(playerRoot, coin, scene, coinSound) {
 }
 function createVolumeToggle(ambientSound, coinSound) {
     const guiTexture = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-    const volumeImage = new GUI.Image("volumeToggle", "ui/vol_unmute.png");
+    const volumeImage = new GUI.Image("volumeToggle", "./ui/vol_unmute.png");
     volumeImage.width = "60px";
     volumeImage.height = "60px";
     volumeImage.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
@@ -191,7 +191,7 @@ function createVolumeToggle(ambientSound, coinSound) {
     volumeImage.source = "ui/vol_mute.png";
     volumeImage.onPointerUpObservable.add(() => {
         isMuted = !isMuted;
-        volumeImage.source = isMuted ? "ui/vol_mute.png" : "ui/vol_unmute.png";
+        volumeImage.source = isMuted ? "./ui/vol_mute.png" : "./ui/vol_unmute.png";
         console.log(isMuted ? "Muted" : "Unmuted");
         ambientSound.setVolume(isMuted ? 0 : 0.5);
         coinSound.setVolume(isMuted ? 0 : 0.25);
@@ -215,12 +215,12 @@ export default function createScene4(engine) {
     Engine.audioEngine.unlock();
     console.log("Attempt 2: AudioEngine.unlocked →", (_e = Engine.audioEngine) === null || _e === void 0 ? void 0 : _e.unlocked);
     setupShadows(scene, light);
-    let coinSound = new Sound("coin", "/audio/coin.wav", scene, () => console.log("Coin sound loaded successfully."), { autoplay: false, loop: false, volume: 0 });
-    let ambientSound = new Sound("ambience", "/audio/spaceambience.mp3", scene, () => console.log("music loaded successfully."), { autoplay: true, loop: false, volume: 0 });
+    let coinSound = new Sound("coin", "./audio/coin.wav", scene, () => console.log("Coin sound loaded successfully."), { autoplay: false, loop: false, volume: 0 });
+    let ambientSound = new Sound("ambience", "./audio/spaceambience.mp3", scene, () => console.log("music loaded successfully."), { autoplay: true, loop: false, volume: 0 });
     const inputMap = {};
     let volumeToggle = createVolumeToggle(ambientSound, coinSound);
     let isMuted = true;
-    SceneLoader.ImportMesh("", "/models/", "alien.glb", scene, (meshes, _, __, animationGroups) => {
+    SceneLoader.ImportMesh("", "./models/", "alien.glb", scene, (meshes, _, __, animationGroups) => {
         const playerRoot = new TransformNode("playerRoot", scene);
         meshes.forEach(mesh => (mesh.parent = playerRoot));
         playerRoot.position = new Vector3(0, 3, 0);

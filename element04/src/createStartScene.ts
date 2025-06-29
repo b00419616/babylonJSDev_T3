@@ -134,9 +134,9 @@ function createSpaceRock(scene: Scene) {
     spacerock.position = new Vector3(0, 0, 0);
 
     const mat = new StandardMaterial("rockMat", scene);
-    mat.diffuseTexture = new Texture("/textures/spacedebris.png", scene);
+    mat.diffuseTexture = new Texture("./textures/spacedebris.png", scene);
 
-    mat.bumpTexture = new Texture("/textures/spacedebris_n.png", scene);
+    mat.bumpTexture = new Texture("./textures/spacedebris_n.png", scene);
     mat.bumpTexture.level = 1.25;
     console.log("Bump Level is:  ", mat.bumpTexture.level); 
 
@@ -211,7 +211,7 @@ function createSkybox(scene: Scene) {
   const mat = new StandardMaterial("skyboxMat", scene);
   mat.backFaceCulling = false;
 
-  const texture = new CubeTexture("/textures/skybox/skybox", scene);
+  const texture = new CubeTexture("./textures/skybox/skybox", scene);
   mat.reflectionTexture = texture;
   mat.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
   mat.disableLighting = true;
@@ -349,7 +349,7 @@ console.log("Attempt 2: AudioEngine.unlocked →", Engine.audioEngine?.unlocked)
 
       let coinSound = new Sound(
     "coin",
-    "/audio/coin.wav",
+    "./audio/coin.wav",
     scene,
     () => console.log("Coin sound loaded successfully."),
     { autoplay: false, loop: false, volume: 0 }
@@ -358,7 +358,7 @@ console.log("Attempt 2: AudioEngine.unlocked →", Engine.audioEngine?.unlocked)
 
     let ambientSound = new Sound(
     "ambience",
-    "/audio/spaceambience.mp3",
+    "./audio/spaceambience.mp3",
     scene,
     () => console.log("music loaded successfully."),
     { autoplay: true, loop: false, volume: 0 }
@@ -374,7 +374,7 @@ console.log("Attempt 2: AudioEngine.unlocked →", Engine.audioEngine?.unlocked)
 
   SceneLoader.ImportMesh(
     "",
-    "/models/",
+    "./models/",
     "alien.glb",
     scene,
     (meshes, _, __, animationGroups) => {

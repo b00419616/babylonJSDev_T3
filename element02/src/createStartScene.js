@@ -45,7 +45,7 @@ function setupShadows(scene, light) {
         ground.receiveShadows = true;
 }
 function createGround(scene) {
-    let ground = MeshBuilder.CreateGroundFromHeightMap("ground", "textures/heightMap.png", { width: 512, height: 512, subdivisions: 512, minHeight: 0, maxHeight: 20 }, scene);
+    let ground = MeshBuilder.CreateGroundFromHeightMap("ground", "./textures/heightMap.png", { width: 512, height: 512, subdivisions: 512, minHeight: 0, maxHeight: 20 }, scene);
     applyTexture(ground, "moonMat", "textures/moon.jpg", scene);
     return ground;
 }
@@ -56,8 +56,8 @@ export default function createStartScene(engine) {
         let spacerock = MeshBuilder.CreatePolyhedron("spacerock", { type: polyType, size: 1.5 }, scene);
         spacerock.position = new Vector3(0, 0, 0);
         const mat = new StandardMaterial("rockMat", scene);
-        mat.diffuseTexture = new Texture("/textures/spacedebris.png", scene);
-        mat.bumpTexture = new Texture("/textures/spacedebris_n.png", scene);
+        mat.diffuseTexture = new Texture("./textures/spacedebris.png", scene);
+        mat.bumpTexture = new Texture("./textures/spacedebris_n.png", scene);
         mat.bumpTexture.level = 1.25;
         console.log("Bump Level is:  ", mat.bumpTexture.level);
         spacerock.material = mat;
@@ -108,7 +108,7 @@ export default function createStartScene(engine) {
         const skybox = MeshBuilder.CreateBox("skybox", { size: 5000 }, scene);
         const mat = new StandardMaterial("skyboxMat", scene);
         mat.backFaceCulling = false;
-        const texture = new CubeTexture("/textures/skybox/skybox", scene);
+        const texture = new CubeTexture("./textures/skybox/skybox", scene);
         mat.reflectionTexture = texture;
         mat.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         mat.disableLighting = true;
