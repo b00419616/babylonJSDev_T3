@@ -16,6 +16,7 @@ export default defineConfig({
   },
   assetsInclude: ['**/*.glb'],
   build: {
+    outDir: 'docs',
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
